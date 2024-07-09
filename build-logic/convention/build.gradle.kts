@@ -42,5 +42,9 @@ gradlePlugin {
             id = "kinesis.jvm.library"
             implementationClass = "JvmLibraryConventionPlugin"
         }
+        register("jvmKtor") {
+            id = "kinesis.jvm.ktor"
+            implementationClass = "JvmKtorConventionPlugin"
+        }
     }
 }

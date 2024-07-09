@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.kinesis.android.application.compose)
+    alias(libs.plugins.kinesis.jvm.ktor)
     alias(libs.plugins.mapsplatform.secrets.plugin)
 }
 
