@@ -38,5 +38,9 @@ gradlePlugin {
             id = "kinesis.android.room"
             implementationClass = "AndroidRoomConventionPlugin"
         }
+        register("jvmLibrary") {
+            id = "kinesis.jvm.library"
+            implementationClass = "JvmLibraryConventionPlugin"
+        }
     }
 }

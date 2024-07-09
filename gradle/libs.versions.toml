@@ -124,6 +124,7 @@ kinesis-android-library = { id = "kinesis.android.library", version = "unspecifi
 kinesis-android-library-compose = { id = "kinesis.android.library.compose", version = "unspecified" }
 kinesis-android-feature-ui = { id = "kinesis.android.feature.ui", version = "unspecified" }
 kinesis-android-room = { id = "kinesis.android.room", version = "unspecified" }
+kinesis-jvm-library = { id = "kinesis.jvm.library", version = "unspecified" }
 
 [bundles]
 compose = [
