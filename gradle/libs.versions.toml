@@ -121,3 +121,4 @@ mapsplatform-secrets-plugin = { id = "com.google.android.libraries.mapsplatform.
 kinesis-android-application = { id = "kinesis.android.application", version = "unspecified" }
 kinesis-android-application-compose = { id = "kinesis.android.application.compose", version = "unspecified" }
 kinesis-android-library = { id = "kinesis.android.library", version = "unspecified" }
+kinesis-android-library-compose = { id = "kinesis.android.library.compose", version = "unspecified" }
