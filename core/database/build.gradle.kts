@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.kinesis.android.library)
+    alias(libs.plugins.kinesis.android.room)
 }
 
 android {

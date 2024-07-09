@@ -34,5 +34,9 @@ gradlePlugin {
             id = "kinesis.android.feature.ui"
             implementationClass = "AndroidFeatureUiConventionPlugin"
         }
+        register("androidRoom") {
+            id = "kinesis.android.room"
+            implementationClass = "AndroidRoomConventionPlugin"
+        }
     }
 }
