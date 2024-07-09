@@ -18,5 +18,9 @@ gradlePlugin {
             id = "kinesis.android.application"
             implementationClass = "AndroidApplicationConventionPlugin"
         }
+        register("androidApplicatioCompose") {
+            id = "kinesis.android.application.compose"
+            implementationClass = "AndroidApplicationComposeConventionPlugin"
+        }
     }
 }
