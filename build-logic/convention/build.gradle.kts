@@ -22,5 +22,9 @@ gradlePlugin {
             id = "kinesis.android.application.compose"
             implementationClass = "AndroidApplicationComposeConventionPlugin"
         }
+        register("androidLibrary") {
+            id = "kinesis.android.library"
+            implementationClass = "AndroidLibraryConventionPlugin"
+        }
     }
 }
