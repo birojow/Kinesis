@@ -1,3 +1,5 @@
+import app.birojow.convention.ExtensionType
+import app.birojow.convention.configureBuildTypes
 import app.birojow.convention.configureKotlinAndroid
 import app.birojow.convention.versionAsInt
 import app.birojow.convention.versionAsString
@@ -26,6 +28,11 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
                 }
 
                 configureKotlinAndroid(this)
+
+                configureBuildTypes(
+                    this,
+                    ExtensionType.Application
+                )
             }
         }
     }
