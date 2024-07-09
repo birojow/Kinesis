@@ -12,3 +12,5 @@ fun Project.versionAsString(alias: String) = libs.findVersion(alias).get().toStr
 fun Project.versionAsInt(alias: String) = libs.findVersion(alias).get().toString().toInt()
 
 fun Project.library(alias: String) = libs.findLibrary(alias).get()
+
+fun Project.bundle(alias: String) = libs.findBundle(alias).get()
