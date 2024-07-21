@@ -18,7 +18,8 @@ val DarkColorScheme = darkColorScheme(
     onPrimary = KinesisBlack,
     onBackground = KinesisWhite,
     onSurface = KinesisWhite,
-    onSurfaceVariant = KinesisGray
+    onSurfaceVariant = KinesisGray,
+    error = KinesisDarkRed
 )
 
 @Composable
