@@ -3,6 +3,7 @@ package app.birojow.kinesis
 import android.app.Application
 import app.birojow.auth.data.di.authDataModule
 import app.birojow.auth.presentation.di.authViewModelModule
+import app.birojow.core.data.di.coreDataModule
 import app.birojow.kinesis.di.appModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -21,9 +22,10 @@ class KinesisApplication : Application() {
             androidLogger()
             androidContext(this@KinesisApplication)
             modules(
+                appModule,
                 authDataModule,
                 authViewModelModule,
-                appModule
+                coreDataModule
             )
         }
     }
