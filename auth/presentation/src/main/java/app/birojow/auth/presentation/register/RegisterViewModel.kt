@@ -77,7 +77,7 @@ class RegisterViewModel(
 
             when(result) {
                 is Result.Error -> {
-                    if (result.error == DataError.NetworkError.CONFLICT) {
+                    if (result.error == DataError.Network.CONFLICT) {
                         eventChannel.send(
                             RegisterEvent.Error(
                                 UiText.StringResource(R.string.error_email_exists)

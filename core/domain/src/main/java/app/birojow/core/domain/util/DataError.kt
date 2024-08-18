@@ -2,7 +2,7 @@ package app.birojow.core.domain.util
 
 sealed interface DataError : Error {
 
-    enum class NetworkError : DataError {
+    enum class Network : DataError {
         REQUEST_TIMEOUT,
         UNAUTHORIZED,
         CONFLICT,
@@ -14,7 +14,7 @@ sealed interface DataError : Error {
         UNKNOWN
     }
 
-    enum class LocalDataError : DataError {
+    enum class Local : DataError {
         DISK_FULL
     }
 }

@@ -25,6 +25,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -51,7 +52,7 @@ val context = LocalContext.current
     ObserveAsEvents(viewModel.events) { event ->
         keyboardController?.hide()
         when(event) {
-            is LoginEvent.Error -> {
+            is LoginEvent.LoginError -> {
                 Toast.makeText(
                     context,
                     event.error.asString(context),
@@ -90,8 +91,8 @@ private fun LoginScreen(
     GradientBackground {
         Column(
             modifier = Modifier
-                .verticalScroll(rememberScrollState())
                 .fillMaxSize()
+                .verticalScroll(rememberScrollState())
                 .padding(horizontal = 16.dp)
                 .padding(vertical = 32.dp)
                 .padding(top = 16.dp)
@@ -116,6 +117,7 @@ private fun LoginScreen(
                 endIcon = null,
                 hint = stringResource(R.string.example_email),
                 title = stringResource(R.string.email),
+                keyboardType = KeyboardType.Email,
                 modifier = Modifier.fillMaxWidth()
             )
 
@@ -137,7 +139,7 @@ private fun LoginScreen(
             KinesisActionButton(
                 text = stringResource(R.string.login),
                 isLoading = state.isLoggingIn,
-                enabled = state.canLogin
+                enabled = state.canLogin && !state.isLoggingIn
             ) {
                 onAction(LoginAction.OnLoginclick)
             }

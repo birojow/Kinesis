@@ -20,7 +20,7 @@ import kotlinx.serialization.SerializationException
 suspend inline fun <reified Response: Any?> HttpClient.get(
     route: String,
     queryParameters: Map<String, Any?> = mapOf()
-): Result<Response, DataError.NetworkError> = safeCall {
+): Result<Response, DataError.Network> = safeCall {
     get {
         url(constructRoute(route))
         queryParameters.forEach { (key, value) ->
@@ -32,7 +32,7 @@ suspend inline fun <reified Response: Any?> HttpClient.get(
 suspend inline fun <reified Response: Any?> HttpClient.delete(
     route: String,
     queryParameters: Map<String, Any?> = mapOf()
-): Result<Response, DataError.NetworkError> = safeCall {
+): Result<Response, DataError.Network> = safeCall {
     delete {
         url(constructRoute(route))
         queryParameters.forEach { (key, value) ->
@@ -44,26 +44,26 @@ suspend inline fun <reified Response: Any?> HttpClient.delete(
 suspend inline fun <reified Request, reified Response: Any?> HttpClient.post(
     route: String,
     body: Request
-): Result<Response, DataError.NetworkError> = safeCall {
+): Result<Response, DataError.Network> = safeCall {
     post {
         url(constructRoute(route))
         setBody(body)
     }
 }
 
-suspend inline fun <reified T> safeCall(execute: () -> HttpResponse): Result<T, DataError.NetworkError> {
+suspend inline fun <reified T> safeCall(execute: () -> HttpResponse): Result<T, DataError.Network> {
     val response = try {
         execute()
     } catch (e: UnresolvedAddressException) {
         e.printStackTrace()
-        return Result.Error(DataError.NetworkError.NO_INTERNET)
+        return Result.Error(DataError.Network.NO_INTERNET)
     } catch (e: SerializationException) {
         e.printStackTrace()
-        return Result.Error(DataError.NetworkError.SERIALIZATION)
+        return Result.Error(DataError.Network.SERIALIZATION)
     } catch (e: Exception) {
         if(e is CancellationException) throw e
         e.printStackTrace()
-        return Result.Error(DataError.NetworkError.UNKNOWN)
+        return Result.Error(DataError.Network.UNKNOWN)
     }
 
     return responseToResult(response)
@@ -71,15 +71,15 @@ suspend inline fun <reified T> safeCall(execute: () -> HttpResponse): Result<T, 
 
 suspend inline fun <reified T> responseToResult(
     response: HttpResponse
-): Result<T, DataError.NetworkError> = when(response.status.value) {
+): Result<T, DataError.Network> = when(response.status.value) {
     in 200..299 -> Success(response.body<T>())
-    401 -> Result.Error(DataError.NetworkError.UNAUTHORIZED)
-    408 -> Result.Error(DataError.NetworkError.REQUEST_TIMEOUT)
-    409 -> Result.Error(DataError.NetworkError.CONFLICT)
-    413 -> Result.Error(DataError.NetworkError.PAYLOAD_TOO_LARGE)
-    429 -> Result.Error(DataError.NetworkError.TOO_MANY_REQUESTS)
-    in 500..599 -> Result.Error(DataError.NetworkError.SERVER_ERROR)
-    else -> Result.Error(DataError.NetworkError.UNKNOWN)
+    401 -> Result.Error(DataError.Network.UNAUTHORIZED)
+    408 -> Result.Error(DataError.Network.REQUEST_TIMEOUT)
+    409 -> Result.Error(DataError.Network.CONFLICT)
+    413 -> Result.Error(DataError.Network.PAYLOAD_TOO_LARGE)
+    429 -> Result.Error(DataError.Network.TOO_MANY_REQUESTS)
+    in 500..599 -> Result.Error(DataError.Network.SERVER_ERROR)
+    else -> Result.Error(DataError.Network.UNKNOWN)
 }
 
 fun constructRoute(route: String): String = when {
