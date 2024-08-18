@@ -39,7 +39,6 @@ import app.birojow.core.presentation.designsystem.CheckIcon
 import app.birojow.core.presentation.designsystem.CrossIcon
 import app.birojow.core.presentation.designsystem.EmailIcon
 import app.birojow.core.presentation.designsystem.KinesisDarkRed
-import app.birojow.core.presentation.designsystem.KinesisGray
 import app.birojow.core.presentation.designsystem.KinesisGreen
 import app.birojow.core.presentation.designsystem.KinesisTheme
 import app.birojow.core.presentation.designsystem.Poppins
@@ -108,7 +107,7 @@ private fun RegisterScreen(
                 withStyle(
                     style = SpanStyle(
                         fontFamily = Poppins,
-                        color = KinesisGray
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                 ) {
                     append(stringResource(id = R.string.already_have_an_account) + " ")
